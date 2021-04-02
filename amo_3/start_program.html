@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>lab_3</title>
+    <script src="main.js"></script>
+    <script src="lib/liteChart.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1>
+    Відлагодження програми на функції сінус
+</h1>
+<h3>
+    у точці 0.5 на проміжку [-1, 1] <br>
+    еталонне значення : 0.4794255386
+</h3>
+    <table id="tab"></table>
+    <script>
+        document.getElementById("tab").innerHTML = Boss.draw_tab(Math.sin, [-1, 1], 0.5, 6);
+    </script>
+<h1>
+    Знаходження значення e^cos(x)
+</h1>
+<h3>
+    у точці 3.5 на проміжку [0, 5] <br>
+    еталонне значення : 0.39201440701
+</h3>
+<table id="tab2"></table>
+<script>
+    document.getElementById("tab2").innerHTML = Boss.draw_tab(x => Math.exp(Math.cos(x)), [0, 5], 3.5);
+</script>
+<h3>
+    Похибка
+</h3>
+    <div id="your-id" style="height: 400px;"></div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function(){
+            // Create liteChart.js Object
+            let settings = {};
+            let d = new liteChart("chart", settings);
+
+            // Set labels значеня n =
+            const p = n => {
+                const p1 = n1 => Boss.get_value(x => Math.exp(Math.cos(x)), [0, 5], 3.5, n1)
+                return Math.abs(p1(n) - p1(n+1))
+            }
+
+            d.setLabels(Array(10).fill(0).map((_, i) => `n = ${i+1}`));
+            // console.log(Array(10).map((_, i) => `n = ${i}`))
+            // console.log(Array(10).map((_, i) => p(i)))
+            //alert()
+            // Set legends and values
+            d.addLegend({
+                "name": "e^cos(x)",
+                "stroke": "#CDDC39",
+                "fill": "#fff",
+                "values": Array(10).fill(0).map((_, i) => p(i+1))
+            });
+
+            // Inject chart into DOM object
+            let div = document.getElementById("your-id");
+            d.inject(div);
+
+            // Draw
+            d.draw();
+        });
+    </script>
+</body>
+</html>

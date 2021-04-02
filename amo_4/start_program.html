@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script type="text/javascript" src="main.js"></script>
+<h2>Метод хорд</h2>
+<h4>Метод хорд <br>
+    рівняння x^2 - 20 * sin(x) = 0
+</h4>
+<form name="form1">
+    Уведіть межі хорд:
+    <br>
+    а:<input type=text size=5 name="myX0">
+    <br>
+    b:<input type=text size=5 name="myX1">
+    <br>
+
+    <div id="but">
+        <p> <select id="E">
+            <option value ="o">Оберіть точність</option>
+            <option value = 0.01> 0.01</option>
+            <option value = 0.001> 0.001</option>
+            <option value = 0.0001> 0.0001</option>
+            <option value = 0.00001> 0.00001</option>
+            <option value = 0.000001> 0.000001</option>
+            <option value = 0.0000001> 0.0000001</option>
+            <option value = 0.00000001> 0.00000001</option>
+            <option value = 0.000000001> 0.000000001</option>
+            <option value = 0.0000000001> 0.0000000001</option>
+            <option value = 0.00000000001> 0.00000000001</option>
+            <option value = 0.000000000001> 0.000000000001</option>
+        </select>
+    </div>
+    <input type="button" value= "Порахувати" onClick ="find()">
+</form>
+
+
+</body>
+</html>
